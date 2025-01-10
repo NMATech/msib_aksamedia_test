@@ -10,10 +10,11 @@ Feature: Add User
     And User click add user button
     And User fill <name>, <username>, <email>, <pass>, and <confirmPass>
     And User click create button
-    Then User got success message
+    Then User got <success> message
 
   Examples:
-  | Ash Dyland | Ash | ash123@gmail.com | password123 | password123
+    | name | username | email | pass | confirmPass | success |
+    | Ash Dyland | Ash | ash123@gmail.com | password123 | password123 | User has been created |
 
   @addUser @negative
   Scenario Outline: Add User with invalid format email
@@ -27,7 +28,8 @@ Feature: Add User
     Then User got <error> email message
 
   Examples:
-  | Dyland Pros | Dyland | dyland@yahoo.com | password123 | password123 | you're email format doesn't acceptable!
+    | name | username | email | pass | confirmPass | error |
+    | Dyland Pros | Dyland | dyland@yahoo.com | password123 | password123 | The email format does not acceptable. |
 
   @addUser @negative
   Scenario Outline: Add User with mismatch password
@@ -41,7 +43,8 @@ Feature: Add User
     Then User got <error> password message
 
   Examples:
-  | Maxhill William | Maxy | maxy123@gmail.com | pass1234 | pass12345 | you're password and confirm password should be match!
+    | name | username | email | pass | confirmPass | error |
+    | Maxhill William | Maxy | maxy123@gmail.com | pass1234 | pass12345 | The password confirmation does not match. |
 
   @addUser @negative
   Scenario Outline: Add User with password less than 8 char
@@ -55,7 +58,8 @@ Feature: Add User
     Then User got <error> password message
 
   Examples:
-  | Simon Minter | Minter | simonn@gmail.com | mypas12 | mypas12 | you're password should be at least 8 char!
+    | name | username | email | pass | confirmPass | error |
+    | Simon Minter | Minter | simonn@gmail.com | mypas12 | mypas12 | The password should be at least 8 char. |
 
   @addUser @negative
   Scenario Outline: Add User with an email that already registered
@@ -69,4 +73,5 @@ Feature: Add User
     Then User got <error> email message
 
   Examples:
-  | TOby Dyland | Toby | ash123@gmail.com | pass1234 | pass1234 | you're email already registered!
+    | name | username | email | pass | confirmPass | error |
+    | Toby Dyland | Toby | ash123@gmail.com | pass1234 | pass1234 | The email has already been taken. |
