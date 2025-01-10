@@ -27,7 +27,7 @@ Feature: Add User
     Then User got <error> email message
 
   Examples:
-  | Dyland Pros | Dyland | dyland@yahoo.com | password123 | password123 | invalid format
+  | Dyland Pros | Dyland | dyland@yahoo.com | password123 | password123 | you're email format doesn't acceptable!
 
   @addUser @negative
   Scenario Outline: Add User with mismatch password
@@ -41,7 +41,7 @@ Feature: Add User
     Then User got <error> password message
 
   Examples:
-  | Maxhill William | Maxy | maxy123@gmail.com | pass1234 | pass12345 | missmatch password
+  | Maxhill William | Maxy | maxy123@gmail.com | pass1234 | pass12345 | you're password and confirm password should be match!
 
   @addUser @negative
   Scenario Outline: Add User with password less than 8 char
@@ -55,7 +55,7 @@ Feature: Add User
     Then User got <error> password message
 
   Examples:
-  | Simon Minter | Minter | simonn@gmail.com | mypas12 | mypas12 | less than 8 char
+  | Simon Minter | Minter | simonn@gmail.com | mypas12 | mypas12 | you're password should be at least 8 char!
 
   @addUser @negative
   Scenario Outline: Add User with an email that already registered
@@ -69,4 +69,4 @@ Feature: Add User
     Then User got <error> email message
 
   Examples:
-  | TOby Dyland | Toby | ash123@gmail.com | pass1234 | pass1234 | already registered
+  | TOby Dyland | Toby | ash123@gmail.com | pass1234 | pass1234 | you're email already registered!
